@@ -1,0 +1,72 @@
+CREATE TABLE ATTENDANCE_DATABASE.EMPLOYE
+(
+  EMP_NO    NUMBER,
+  EMP_NAME  VARCHAR2(200 BYTE)                  NOT NULL
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX ATTENDANCE_DATABASE.EMPLOYE_PK ON ATTENDANCE_DATABASE.EMPLOYE
+(EMP_NO)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE ATTENDANCE_DATABASE.EMPLOYE ADD (
+  CONSTRAINT EMPLOYE_PK
+ PRIMARY KEY
+ (EMP_NO)
+    USING INDEX 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+               ));
+
+
+
+CREATE TABLE ATTENDANCE_DATABASE.EMP_ATTENDANCE
+(
+  EMP_NO      NUMBER                            NOT NULL,
+  PRD_NO      NUMBER                            NOT NULL,
+  TIME_ARR    VARCHAR2(200 BYTE)                NOT NULL,
+  DATE_D      VARCHAR2(200 BYTE)                NOT NULL,
+  TIME_COUNT  NUMBER                            DEFAULT 0
+);
+
+
